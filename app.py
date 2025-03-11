@@ -36,6 +36,7 @@ if st.button('Получить'):
     answers = get_ans_on_kim(int(variant_id))
     if isinstance(answers, list):
         for ans in answers:
-            st.write(f'{ans["id"]}\n{ans["answer"]}')
+            st.success(f'{ans["id"]}:')
+            st.write(f'{ans["answer"]}')
     else:
         st.error('Неверный номер варианта')
