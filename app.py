@@ -18,9 +18,8 @@ def get_ans_on_kim(kim_num):
             except:
                 taskId = 'без номера'
             taskId = str(taskId)
-            taskId += ' (' + str(index) + ')'
             taskAnswer = task['key']
-            answers.append({'id': taskId, 'answer': str(taskAnswer)})
+            answers.append({'Номер задания': index, 'Номер в базе': taskId, 'Ответ': str(taskAnswer)})
             index += 1
 
         return answers
