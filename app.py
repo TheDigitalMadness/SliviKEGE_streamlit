@@ -2,6 +2,19 @@ import streamlit as st
 import pandas as pd
 
 
+st.markdown(
+        """
+        <style>
+        .stButton>button {
+            width: 100%;  /* Ширина кнопки подстраивается под текст */
+            padding: 10px 20px;  /* Добавляем отступы для красоты */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+
 def get_ans_on_kim(kim_num):
     import requests
     import json
