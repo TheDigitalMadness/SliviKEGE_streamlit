@@ -20,7 +20,7 @@ def get_ans_on_kim(kim_num):
                 taskId = 'без номера'
             taskId = str(taskId)
             taskAnswer = task['key']
-            answers.append({'Номер задания': index, 'Номер в базе': taskId, 'Ответ': str(taskAnswer)})
+            answers.append({'Номер задания': index, 'Номер в базе': taskId, 'Ответ': str(taskAnswer).replace('\\n', '\n')})
             index += 1
 
         return answers
