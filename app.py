@@ -29,14 +29,48 @@ def get_ans_on_kim(kim_num):
         return 'Unexpected error'
 
 
-st.title('Получение ответов на КЕГЭ варианты')
-variant_id = st.number_input('Номер варианта', min_value=0, value=12345678, step=1)
+def KegeSlivi():
+    st.title('Получение ответов на КЕГЭ варианты')
+    variant_id = st.number_input('Номер варианта', min_value=0, value=12345678, step=1)
+    
+    if st.button('Получить'):
+        answers = get_ans_on_kim(int(variant_id))
+        if isinstance(answers, list):
+            df = pd.DataFrame(answers)
+    
+            st.dataframe(df, hide_index=True)
+        else:
+            st.error('Неверный номер варианта')
 
-if st.button('Получить'):
-    answers = get_ans_on_kim(int(variant_id))
-    if isinstance(answers, list):
-        df = pd.DataFrame(answers)
 
-        st.dataframe(df, hide_index=True)
-    else:
-        st.error('Неверный номер варианта')
+def RegeSlivi():
+    st.title('Разрабатываю')
+
+
+def DocsSlivi():
+    st.title('Планируется в разработке после РешуЕГЭ')
+
+
+mode = 1
+
+with st.sidebar:
+    st.title('Функционал')
+    b_kegeSlivi = st.button('Ответы на КЕГЭ')
+    b_RegeSlivi = st.button('Ответы на РешуЕГЭ (coming soon)')
+    b_docsSlivi = st.button('Ответы на тесты из Google Docs (coming soon)')
+
+    if b_kegeSlivi:
+        mode = 1
+    elif b_RegeSlivi:
+        mode = 2
+    elif b_docsSlivi:
+        mode = 3
+
+
+modes_actions = {
+    1: KegeSlivi,
+    2: RegeSlivi,
+    3: DocsSlivi
+}
+
+modes_actions[mode]()
