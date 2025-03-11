@@ -35,9 +35,8 @@ variant_id = st.number_input('Номер варианта', min_value=0, value=1
 if st.button('Получить'):
     answers = get_ans_on_kim(int(variant_id))
     if isinstance(answers, list):
-        st.write(answers)
-        for ans in answers:
-            st.success(f'{ans["id"]}:')
-            st.write(f'{ans["answer"]}')
+        df = pd.DataFrame(answers)
+
+        st.dataframe(df, hide_index=True)
     else:
         st.error('Неверный номер варианта')
