@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 
 def get_ans_on_kim(kim_num):
